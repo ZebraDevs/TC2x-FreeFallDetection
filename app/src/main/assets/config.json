@@ -1,0 +1,22 @@
+{
+  "IntentTextToSpeak": [
+    {
+      "intent" : "android.intent.action.ACTION_POWER_CONNECTED",
+      "TextToSpeak": "Power Connected",
+      "TTS_enabled": false
+    }
+  ,
+    {
+      "intent" : "android.intent.action.ACTION_POWER_DISCONNECTED",
+      "TextToSpeak": "Power Disconnected",
+      "TTS_enabled": false
+    }
+  ,
+    {
+      "intent" : "nl.rkeb.freefalldetection.ACTION",
+      "TextToSpeak": "A Free Fall Detection is triggered",
+      "intentExtraString": "Sensor Send",
+      "TTS_enabled": true
+    }
+  ]
+}
