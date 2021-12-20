@@ -69,15 +69,18 @@ public class MainActivity extends AppCompatActivity implements PermissionsHelper
         @Override
         public void onReceive(Context context, Intent intent) {
             String mIntent = intent.getAction();
+            Boolean isFallDetected = intent.getBooleanExtra("Sensor Send",true);
 
-            for (Config.IntentTextToSpeak intentTextToSpeak : App.mConfig.getIntentTextToSpeaks()) {
-                if (mIntent.equalsIgnoreCase(String.valueOf(intentTextToSpeak.getIntent()))) {
-                    if (intentTextToSpeak.getTTSEnabled()) {
-                        String textToSpeak = String.valueOf(intentTextToSpeak.getTextToSPeak());
-                        String extraTextToSpeak = String.valueOf(intentTextToSpeak.getIntentExtraString());
+            if(isFallDetected) {
+                for (Config.IntentTextToSpeak intentTextToSpeak : App.mConfig.getIntentTextToSpeaks()) {
+                    if (mIntent.equalsIgnoreCase(String.valueOf(intentTextToSpeak.getIntent()))) {
+                        if (intentTextToSpeak.getTTSEnabled()) {
+                            String textToSpeak = String.valueOf(intentTextToSpeak.getTextToSPeak());
+                            String extraTextToSpeak = String.valueOf(intentTextToSpeak.getIntentExtraString());
 
-                        Log.i(TAG, String.valueOf(intentTextToSpeak.getIntent()) +  " - " +  textToSpeak + " : " + extraTextToSpeak);
-                        playTtsFreeFallDetection(textToSpeak);
+                            Log.i(TAG, String.valueOf(intentTextToSpeak.getIntent()) + " - " + textToSpeak + " : " + extraTextToSpeak);
+                            playTtsFreeFallDetection(textToSpeak);
+                        }
                     }
                 }
             }
